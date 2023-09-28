@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+   	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+  <GetMatches Typ="Req">
+	<Reserved T="I" S="4"/>
+	<HasState T="B"/>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4" D="MIN_ID"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<HasMinimalIds T="B"/>
+	<MinimalIds C="HasMinimalIds=true">
+	  <MinimalIdCount T="I" S="4"/>
+	  <MinimalEntries N="MinimalIdCount">
+		<MinimalEntryID T="I" S="4" D="MIN_ID"/>
+	  </MinimalEntries>
+	</MinimalIds>
+	<InterfaceOptionFlags T="I" S="4"/>
+	<HasFilter T="B"/>
+	<Filter C="HasFilter=true">
+	  <Restrictionion T="XB"/>
+	</Filter>
+	<HasPropertyName T="B"/>
+	<Property C="HasPropertyName=true">
+	  <PropertyNameGuid T="G"/>
+	  <PropertyNameId T="I" S="4"/>
+	</Property>
+	<RowCount T="I" S="4"/>
+	<HasColumns T="B"/>
+	<LargePropertyTagArray C="HasColumns=true" X="Columns">
+	  <PropertyTagCount T="I" S="4"/>
+	  <PropertyTags N="PropertyTagCount">
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId T="I" S="2" D="PID"/>
+		</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetMatches>
+
+  <GetMatches Typ="Resp">
+	<Status T="I" S="4"/>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<HasState T="B">false</HasState>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<HasMinimalIds T="B"/>
+	<MinimalIds C="HasMinimalIds=true">
+	  <MinimalIdCount T="I" S="4"/>
+	  <MinimalEntries N="MinimalIdCount">
+	    <MinimalEntryID T="I" S="4" D="MIN_ID"/>
+	  </MinimalEntries>
+	</MinimalIds>
+	<HasColumnsAndRows T="B"/>
+	<LargePropertyTagArray C="HasColumnsAndRows=true" X="Columns">
+	  <PropertyTagCount T="I" S="4"/>
+	  <PropertyTags>
+		<PropertyTag>
+		  <PropertyType1 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId1 T="I" S="2" D="PID"/>
+	    </PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType2 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId2 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType3 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId3 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType4 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId4 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType5 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId5 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType6 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId6 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType7 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId7 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType8 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId8 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType9 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId9 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType10 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId10 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	    <PropertyTag>
+		  <PropertyType11 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId11 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType12 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId12 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType13 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId13 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType14 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId14 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType15 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId15 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AddressBookPropertyRow X="Rows" C="HasColumnsAndRows=true">
+	  <RowCount T="I" S="4"/>
+	  <Flags T="I" S="1" D="AB_ROW_TYP"/>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType1=DATA"/>
+		    <Count T="I" S="4" C="PropertyType1=MULTI"/>
+			<Value V="PropertyType1" C="PropertyType1!MULTI"/>
+			<Value V="PropertyType1" S="Count" C="PropertyType1=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType2=DATA"/>
+		    <Count T="I" S="4" C="PropertyType2=MULTI"/>
+			<Value V="PropertyType2" C="PropertyType2!MULTI"/>
+			<Value V="PropertyType2" S="Count" C="PropertyType2=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType3=DATA"/>
+		    <Count T="I" S="4" C="PropertyType3=MULTI"/>
+			<Value V="PropertyType3" C="PropertyType3!MULTI"/>
+			<Value V="PropertyType3" S="Count" C="PropertyType3=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType4=DATA"/>
+		    <Count T="I" S="4" C="PropertyType4=MULTI"/>
+			<Value V="PropertyType4" C="PropertyType4!MULTI"/>
+			<Value V="PropertyType4" S="Count" C="PropertyType4=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType5=DATA"/>
+		    <Count T="I" S="4" C="PropertyType5=MULTI"/>
+			<Value V="PropertyType5" C="PropertyType5!MULTI"/>
+			<Value V="PropertyType5" S="Count" C="PropertyType5=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType6=DATA"/>
+		    <Count T="I" S="4" C="PropertyType6=MULTI"/>
+			<Value V="PropertyType6" C="PropertyType6!MULTI"/>
+			<Value V="PropertyType6" S="Count" C="PropertyType6=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType7=DATA"/>
+		    <Count T="I" S="4" C="PropertyType7=MULTI"/>
+			<Value V="PropertyType7" C="PropertyType7!MULTI"/>
+			<Value V="PropertyType7" S="Count" C="PropertyType7=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType8=DATA"/>
+		    <Count T="I" S="4" C="PropertyType8=MULTI"/>
+			<Value V="PropertyType8" C="PropertyType8!MULTI"/>
+			<Value V="PropertyType8" S="Count" C="PropertyType8=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType9=DATA"/>
+		    <Count T="I" S="4" C="PropertyType9=MULTI"/>
+			<Value V="PropertyType9" C="PropertyType9!MULTI"/>
+			<Value V="PropertyType9" S="Count" C="PropertyType9=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType10=DATA"/>
+		    <Count T="I" S="4" C="PropertyType10=MULTI"/>
+			<Value V="PropertyType10" C="PropertyType10!MULTI"/>
+			<Value V="PropertyType10" S="Count" C="PropertyType10=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType11=DATA"/>
+		    <Count T="I" S="4" C="PropertyType11=MULTI"/>
+			<Value V="PropertyType11" C="PropertyType11!MULTI"/>
+			<Value V="PropertyType11" S="Count" C="PropertyType11=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType12=DATA"/>
+		    <Count T="I" S="4" C="PropertyType12=MULTI"/>
+			<Value V="PropertyType12" C="PropertyType12!MULTI"/>
+			<Value V="PropertyType12" S="Count" C="PropertyType12=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType13=DATA"/>
+		    <Count T="I" S="4" C="PropertyType13=MULTI"/>
+			<Value V="PropertyType13" C="PropertyType13!MULTI"/>
+			<Value V="PropertyType13" S="Count" C="PropertyType13=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType14=DATA"/>
+		    <Count T="I" S="4" C="PropertyType14=MULTI"/>
+			<Value V="PropertyType14" C="PropertyType14!MULTI"/>
+			<Value V="PropertyType14" S="Count" C="PropertyType14=MULTI"/>
+	 	  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+		<AddressBookFlaggedPropertyValue>
+		  <Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+			<HasValue T="B" C="PropertyType15=DATA"/>
+		    <Count T="I" S="4" C="PropertyType15=MULTI"/>
+			<Value V="PropertyType15" C="PropertyType15!MULTI"/>
+			<Value V="PropertyType15" S="Count" C="PropertyType15=MULTI"/>
+		  </PropertyValue>
+		</AddressBookFlaggedPropertyValue>
+	</AddressBookPropertyRow>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetMatches>
+  
+  <GetMatches Typ="mkResp">
+	<Status T="I" S="4">0</Status>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<HasState T="B">true</HasState>
+	<State>
+	  <SortType T="I" S="4" D="SORT_TYPE">DisplayName</SortType>
+	  <ContainerID T="I" S="4">0</ContainerID>
+	  <CurrentRec T="I" S="4">0</CurrentRec>
+	  <Delta T="I" S="4">0</Delta>
+	  <NumPos T="I" S="4">0</NumPos>
+	  <TotalRecs T="I" S="4">5000</TotalRecs>
+	  <CodePage T="I" S="4" D="CODEPAGE">ISO-8859-1</CodePage>
+	  <TemplateLocale T="I" S="4">1031</TemplateLocale>
+	  <SortLocale T="I" S="4">1031</SortLocale>
+	</State>
+	<HasMinimalIds T="B">true</HasMinimalIds>
+	<MinimalIds>
+	  <MinimalIdCount T="I" S="4">1</MinimalIdCount>
+		<MinimalEntries N="MinimalIdCount">
+	    <MinimalEntryID T="I" S="4" D="MIN_ID">Handle01</MinimalEntryID>
+	  </MinimalEntries>
+	</MinimalIds>
+	<HasColumnsAndRows T="B">true</HasColumnsAndRows>
+	<LargePropertyTagArray X="Columns">
+	  <PropertyTagCount T="I" S="4">15</PropertyTagCount>
+	  <PropertyTags>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayType</PropertyId>
+	    </PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">Title</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">BusinessTelephoneNumber</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">OfficeLocation</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DepartmentName</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">SmtpAddress</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">CompanyName</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">Account</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">AddressType</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">H</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">EntryId</PropertyId>
+	  	</PropertyTag>
+	    <PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">ObjectType</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayType</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayTypeEx</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">H</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">InstanceKey</PropertyId>
+	  	</PropertyTag>
+	  	<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">EmailAddress</PropertyId>
+	  	</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AddressBookPropertyRow X="Rows">
+	  <RowCount T="I" S="4">1</RowCount>
+	  <Flags T="I" S="1" D="AB_ROW_TYP">Flagged</Flags>
+	  <AddressBookFlaggedPropertyValue X="DISPLAY_NAME:A">
+	 	<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A" C="HasValue=true">##username</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="TITLE:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="BUSINESS_PHONE:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="OFFICE:A">
+		 <Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="DEPARTMENT:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="SMTPADDRESS:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">##smtp</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="COMPANY:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="ACCOUNT:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">##smtp</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="ADRESS_TYPE:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">EX</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="ENTRY_ID:H">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Count T="I" S="4">32</Count>
+		  <Value X="PropertyType10">
+	  	  	<IdTyp T="I" S="1" D="ENTRY_ID_TYP">EphId</IdTyp>
+		  	<Reserved T="I" S="1">0</Reserved>
+		  	<Reserved T="I" S="1">0</Reserved>
+		  	<Reserved T="I" S="1">0</Reserved>
+		  	<ProviderUID T="G" D="GUID">Server</ProviderUID>
+		  	<Reserved T="I" S="4">1</Reserved>
+		  	<DisplayType T="I" S="4" F="DISPLAY_TYPE">MailUser</DisplayType>
+		  	<MinId T="I" S="4" D="MIN_ID_ANR">Ambigious</MinId>
+		  </Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="OBJ_TYPE:I4">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <Value T="I" S="4" D="OBJ_TYPE">MailUser</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="DISPLAY_TYPE:I4">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <Value T="I" S="4" F="DISPLAY_TYPE">MailUser</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="DISPLAY_TYPE_EX:I4">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <Value T="I" S="4" F="DISPLAY_TYPE">MailUser|Sharing</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="INSTANCE_KEY:H">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Count T="I" S="4">4</Count>
+		  <Value T="H" S="Count">11000000</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="EMAIL_P:A">
+	    <Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">##dn</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	</AddressBookPropertyRow>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetMatches>
+  
+  <GetMatches Typ="mkRespErr">
+	<Status T="I" S="4">0</Status>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetMatches>
+  
+</syncgw>

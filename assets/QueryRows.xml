@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+  	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+
+<syncgw>
+  
+  <QueryRows Typ="Req">
+	<Flags T="I" S="4"/>
+	<HasState T="B"/>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<ExplicitTableCount T="I" S="4"/>
+	<ExplicitTable>
+	  <MinimalEntries>
+		<MinimalEntryID T="I" S="4" D="MIN_ID"/>
+	  </MinimalEntries>
+	</ExplicitTable>
+	<RowCount T="I" S="4"/>
+	<HasColumns T="B" C="RowCount!0"/>
+	<LargePropertyTagArray C="HasColumns=true" X="Columns">
+	  <PropertyTagCount T="I" S="4"/>
+	  <PropertyTag N="PropertyTagCount">
+		<PropertyType T="I" S="2" D="DATA_TYP"/>
+		<PropertyId T="I" S="2" D="PID"/>
+	  </PropertyTag>
+	</LargePropertyTagArray>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </QueryRows>
+
+  <QueryRows Typ="Resp">
+	<Status T="I" S="4"/>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<HasState T="B"/>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<HasColumnsAndRows T="B"/>
+	<LargePropertyTagArray C="HasColumnsAndRows=true" X="Columns">
+	  <PropertyTagCount T="I" S="4"/>
+	  <PropertyTags>
+	  	<PropertyTag>
+		  <PropertyType1 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId1 T="I" S="2" D="PID"/>
+	  	</PropertyTag>
+		<PropertyTag>
+		  <PropertyType2 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId2 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType3 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId3 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType4 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId4 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType5 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId5 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType6 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId6 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType7 T="I" S="2" D="DATA_TYP"/>
+          <PropertyId7 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType8 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId8 T="I" S="2" D="PID"/>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType9 T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId9 T="I" S="2" D="PID"/>
+		</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AddressBookPropertyRow X="Rows" C="HasColumnsAndRows=true">
+	  <RowCount T="I" S="4"/>
+	  <Flags T="I" S="1" D="AB_ROW_TYP"/>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType1=DATA"/>
+		  <Count T="I" S="4" C="PropertyType1=MULTI"/>
+		  <Value V="PropertyType1"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType2=DATA"/>
+		  <Count T="I" S="4" C="PropertyType2=MULTI"/>
+		  <Value V="PropertyType2"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		  <PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType3=DATA"/>
+		  <Count T="I" S="4" C="PropertyType3=MULTI"/>
+		  <Value V="PropertyType3"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType4=DATA"/>
+		  <Count T="I" S="4" C="PropertyType4=MULTI"/>
+		  <Value V="PropertyType4"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType5=DATA"/>
+		  <Count T="I" S="4" C="PropertyType5=MULTI"/>
+		  <Value V="PropertyType5"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType6=DATA"/>
+		  <Count T="I" S="4" C="PropertyType6=MULTI"/>
+		  <Value V="PropertyType6"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType7=DATA"/>
+		  <Count T="I" S="4" C="PropertyType7=MULTI"/>
+		  <Last T="B" C="PropertyType7=DATA"/>
+		  <Value V="PropertyType7"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType8=DATA"/>
+		  <Count T="I" S="4" C="PropertyType8=MULTI"/>
+		  <Value V="PropertyType8"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue>
+		<Flag T="I" S="1" D="FLAGGED_TYP"/>
+		<PropertyValue C="Flag!NoExist">
+		  <HasValue T="B" C="PropertyType9=DATA"/>
+		  <Count T="I" S="4" C="PropertyType9=MULTI"/>
+		  <Value V="PropertyType9"/>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+ 	</AddressBookPropertyRow>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </QueryRows>
+ 
+  <QueryRows Typ="mkResp">
+	<Status T="I" S="4">0</Status>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<HasState T="B">true</HasState>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE">DisplayName</SortType>
+	  <ContainerID T="I" S="4">0</ContainerID>
+	  <CurrentRec T="I" S="4">0</CurrentRec>
+	  <Delta T="I" S="4">0</Delta>
+	  <NumPos T="I" S="4">0</NumPos>
+	  <TotalRecs T="I" S="4">1</TotalRecs>
+	  <CodePage T="I" S="4" D="CODEPAGE">ISO-8859-1</CodePage>
+	  <TemplateLocale T="I" S="4">1031</TemplateLocale>
+	  <SortLocale T="I" S="4">1031</SortLocale>
+	</State>
+	<HasColumnsAndRows T="B">true</HasColumnsAndRows>
+	<LargePropertyTagArray C="HasColumnsAndRows=true" X="Columns">
+	  <PropertyTagCount T="I" S="4">9</PropertyTagCount>
+	  <PropertyTags>
+	  	<PropertyTag N="PropertyTagCount">
+		  <PropertyType T="I" S="2" D="DATA_TYP">S</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayName</PropertyId>
+	  	</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">EmailAddress</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayType</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">AddressBookHomeMessageDatabase</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">AttachNumber</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">M_A</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">ContactAddressBookFolderName</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">M_A</PropertyType>
+          <PropertyId T="I" S="2" D="PID">AddressBookProxyAddresses</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">DisplayTypeEx</PropertyId>
+		</PropertyTag>
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP">S</PropertyType>
+		  <PropertyId T="I" S="2" D="PID">SmtpAddress</PropertyId>
+		</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AddressBookPropertyRow X="Rows">
+	  <RowCount T="I" S="4">1</RowCount>
+	  <Flags T="I" S="1" D="VALUE_TYP">Flagged</Flags>
+	  <AddressBookFlaggedPropertyValue X="DisplayName:S">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="S">##username</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="EmailAddress:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">##email</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="DisplayType:I4">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <Value T="I" S="4" F="DISPLAY_TYPE">MailUser</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="AddressBookHomeMessageDatabase:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="A">##msgdb</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="AttachNumber:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="ContactAddressBookFolderName:A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">NoExist</Flag>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="AddressBookProxyAddresses:M_A">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Count T="I" S="4">1</Count>
+		  <Last T="B">true</Last>
+		  <Value T="M_A">##email-sec</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue  X="DisplayTypeEx:I4">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Error</Flag>
+		<PropertyValue>
+		  <Value T="I" S="4" F="DISPLAY_TYPE">MailUser|Sharing</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	  <AddressBookFlaggedPropertyValue X="SmtpAddress:S">
+		<Flag T="I" S="1" D="FLAGGED_TYP">Implied</Flag>
+		<PropertyValue>
+		  <HasValue T="B">true</HasValue>
+		  <Value T="S">##smtp</Value>
+		</PropertyValue>
+	  </AddressBookFlaggedPropertyValue>
+	</AddressBookPropertyRow>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </QueryRows>
+ 
+  <QueryRows Typ="mkRespErr">
+	<Status T="I" S="4">0</Status>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </QueryRows>
+  
+</syncgw>

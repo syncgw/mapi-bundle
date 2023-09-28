@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+  	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+  <GetSpecialTable Typ="Req">
+	<Flags T="I" S="4" F="NSPI_TAB"/>
+	<HasState T="B"/>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4" D="MIN_ID"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<HasVersion T="B"/>
+	<Version T="I" S="4" C="HasVersion=true"/>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetSpecialTable>
+
+  <GetSpecialTable Typ="Resp">
+	<Status T="I" S="4">0</Status>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<CodePage T="I" S="4" D="CODEPAGE"/>
+	<HasVersion T="B"/>
+	<Version C="HasVersion=true" T="I" S="4"/>
+	<HasRows T="B"/>
+	<Rows C="HasRows=true">
+	  <RowsCount T="I" S="4"/>
+	  <AddressBookPropertyValueList N="RowsCount">
+		<PropertyValueCount T="I" S="4"/>
+		<AddressBookTaggedPropertyValue N="PropertyValueCount">
+		  <PropertyType T="I" S="2" D="DATA_TYP"/>
+		  <PropertyID T="I" S="2" D="PID"/>
+		  <Property C="PropertyID=EntryId">
+		    <HasValue T="B"/>
+		  	<Value C="HasValue=true">
+		  	  <Count T="I" S="4"/>
+		  	  <Reserved T="I" S="4"/>
+		  	  <ProviderUID T="G" D="GUID"/>
+		  	  <Reserved T="I" S="4"/>
+		  	  <DisplayType T="I" S="4" F="DISPLAY_TYPE"/>
+		  	  <DN T="A"/>
+		  	</Value>
+		  </Property>
+		  <Property C="PropertyType=I2|PropertyType=I4|PropertyType=B">
+			<Value V="PropertyType"/>
+		  </Property>
+		  <Property C="PropertyType=DATA$PropertyID!EntryId">
+		    <HasValue T="B">true</HasValue>
+		    <Count T="I" S="4" C="PropertyType=MULTI"/>
+		    <Last T="B" C="PropertyType=M_S"/>
+		    <Value V="PropertyType" C="HasValue=true"/>
+		  </Property>
+		  <ErrCode T="I" S="4" D="ERR_CODE" C="PropertyType=Error"/>
+		</AddressBookTaggedPropertyValue>
+	  </AddressBookPropertyValueList>
+	</Rows>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetSpecialTable>
+  
+  <GetSpecialTable Typ="mkResp">
+	<Status T="I" S="4">0</Status>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<CodePage T="I" S="4" D="CODEPAGE">ISO-8859-1</CodePage>
+	<HasVersion T="B">true</HasVersion>
+	<Version C="HasVersion=true" T="I" S="4">1</Version>
+	<HasRows T="B">true</HasRows>
+	<Rows C="HasRows=true">
+	  <RowsCount T="I" S="4">2</RowsCount>
+	  <AddressBookPropertyValueList>
+		<PropertyValueCount T="I" S="4">6</PropertyValueCount>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">H</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">EntryId</PropertyID>
+		  <Property>
+		    <HasValue T="B">true</HasValue>
+		  	<Value C="HasValue=true">
+		  	  <Count T="I" S="4">30</Count>
+		  	  <Reserved T="I" S="4">0</Reserved>
+		  	  <ProviderUID T="G" D="GUID">NPSI</ProviderUID>
+		  	  <Reserved T="I" S="4">1</Reserved>
+		  	  <DisplayType T="I" S="4" F="DISPLAY_TYPE">MailUser|Container</DisplayType>
+		  	  <DN T="A">/</DN>
+		    </Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">ContainerFlags</PropertyID>
+		  <Property>
+		  	<XValue V="PropertyType" F="AB_FLAGS">Recipients|Unmodifiable</XValue>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">Depth</PropertyID>
+		  <Property>
+	  	    <Value V="PropertyType">0</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>	
+		  <PropertyID T="I" S="2" D="PID">AddressBookContainerId</PropertyID>
+		  <Property>
+		  	<Value V="PropertyType">0</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">S</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">DisplayName</PropertyID>
+		  <Property>
+		    <HasValue T="B">false</HasValue>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">B</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">AddressBookIsMaster</PropertyID>
+		  <Property>
+		   <Value V="PropertyType" D="AB_MASTER">true</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+	  </AddressBookPropertyValueList>
+	  <AddressBookPropertyValueList>
+		<PropertyValueCount T="I" S="4">6</PropertyValueCount>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">H</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">EntryId</PropertyID>
+		  <Property>
+		  	<HasValue T="B">true</HasValue>
+		  	<Value C="HasValue=true">
+		  	  <Count T="I" S="4">67</Count>
+		  	  <Reserved T="I" S="4">0</Reserved>
+		  	  <ProviderUID T="G" D="GUID">NPSI</ProviderUID>
+		  	  <Reserved T="I" S="4">1</Reserved>
+		  	  <DisplayType T="I" S="4" F="DISPLAY_TYPE">Container</DisplayType>
+		  	  <DN T="A"/>
+		    </Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">ContainerFlags</PropertyID>
+		  <Property>
+		   <Value V="PropertyType" F="AB_FLAGS">Recipients|Unmodifiable</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">Depth</PropertyID>
+		  <Property>
+		    <Value V="PropertyType">0</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">I4</PropertyType>	
+		  <PropertyID T="I" S="2" D="PID">AddressBookContainerId</PropertyID>
+		  <Property>
+		   <Value V="PropertyType" D="MIN_ID">AddressBookContainer</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">S</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">DisplayName</PropertyID>
+		  <Property>
+	  	  	<HasValue T="B">true</HasValue>
+		  	<Value V="PropertyType" C="HasValue=true"/>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+		<AddressBookTaggedPropertyValue>
+		  <PropertyType T="I" S="2" D="DATA_TYP">B</PropertyType>
+		  <PropertyID T="I" S="2" D="PID">AddressBookIsMaster</PropertyID>
+		  <Property>
+	  	    <Value V="PropertyType" D="AB_MASTER">true</Value>
+		  </Property>
+		</AddressBookTaggedPropertyValue>
+	  </AddressBookPropertyValueList>
+	</Rows>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetSpecialTable>
+  
+  <GetSpecialTable Typ="mkRespErr">
+	<Status T="I" S="4">0</Status>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetSpecialTable>
+  
+</syncgw>

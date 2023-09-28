@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+   	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+  <GetProps Typ="Req">
+	<Flags T="I" S="4" F="PROP"/>
+	<HasState T="B"/>
+	<State C="HasState=true">
+	  <SortType T="I" S="4" D="SORT_TYPE"/>
+	  <ContainerID T="I" S="4"/>
+	  <CurrentRec T="I" S="4"/>
+	  <Delta T="I" S="4"/>
+	  <NumPos T="I" S="4"/>
+	  <TotalRecs T="I" S="4"/>
+	  <CodePage T="I" S="4" D="CODEPAGE"/>
+	  <TemplateLocale T="I" S="4"/>
+	  <SortLocale T="I" S="4"/>
+	</State>
+	<HasPropertyTags T="B"/>
+	<LargePropertyTagArray C="HasPropertyTags=true" X="Property">
+	  <PropertyTagCount T="I" S="4"/>
+	  <PropertyTags N="PropertyTagCount">
+		<PropertyTag>
+		  <PropertyType T="I" S="2" D="DATA_TYP"/>
+		  <PropertyId T="I" S="2" D="PID"/>
+		</PropertyTag>
+	  </PropertyTags>
+	</LargePropertyTagArray>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetProps>
+
+  <GetProps Typ="Resp">
+	<StatusCode T="I" S="4"/>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<CodePage T="I" S="4" D="CODEPAGE"/>
+	<HasPropertyValues T="B"/>
+	<AddressBookPropertyValueList C="HasPropertyValues=true">
+	  <PropertyValueCount T="I" S="4"/>
+		<AddressBookTaggedPropertyValue N="PropertyValueCount">
+		  <PropertyType T="I" S="2" D="DATA_TYP"/>
+		  <PropertyID T="I" S="2" D="PID"/>
+		  <Property C="PropertyID=AddressBookObjectGuid">
+		    <HasValue T="B"/>
+		  	<Value C="HasValue=true">
+		  	  <Count T="I" S="4"/>
+		  	  <ProviderUID T="G" D="GUID"/>
+		  	</Value>
+		  </Property>
+		  <Property C="PropertyType=I2|PropertyType=I4|PropertyType=B">
+			<Value V="PropertyType"/>
+		  </Property>
+		  <Property C="PropertyType=DATA$PropertyID!AddressBookObjectGuid">
+		    <HasValue T="B"/>
+		    <Count T="I" S="4" C="PropertyType=MULTI"/>
+		    <Last T="B" C="PropertyType=M_S"/>
+			<Value V="PropertyType" C="HasValue=true|Last=true"/>
+		  </Property>
+		  <ErrCode T="I" S="4" D="ERR_CODE" C="PropertyType=Error"/>
+		</AddressBookTaggedPropertyValue>
+	  </AddressBookPropertyValueList>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetProps>
+  
+  <GetProps Typ="mkResp">
+	<StatusCode T="I" S="4">0</StatusCode>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<CodePage T="I" S="4" D="CODEPAGE">ISO-8859-1</CodePage>
+	<HasPropertyValues T="B">true</HasPropertyValues>
+	<AddressBookPropertyValueList>
+	  <PropertyValueCount T="I" S="4">1</PropertyValueCount>
+	  <AddressBookTaggedPropertyValue>
+		<PropertyType T="I" S="2" D="DATA_TYP"/>
+		<PropertyID T="I" S="2" D="PID"/>
+		<Property C="PropertyID=AddressBookObjectGuid">
+		  <HasValue T="B">true</HasValue>
+		  <Value C="HasValue=true">
+		  	<Count T="I" S="4"/>
+		  	<GUID T="G" D="GUID"/>
+		  </Value>
+		</Property>
+		<Property C="PropertyType=I2|PropertyType=I4|PropertyType=B">
+		  <Value V="PropertyType"/>
+		</Property>
+		<Property C="PropertyType=DATA$PropertyID!AddressBookObjectGuid">
+		  <HasValue T="B">true</HasValue>
+		  <Count T="I" S="4" C="PropertyType=MULTI"/>
+		  <Last T="B" C="PropertyType=M_S"/>
+		  <Value V="PropertyType" C="HasValue=true"/>
+		</Property>
+		<ErrCode T="I" S="4" D="ERR_CODE" C="PropertyType=Error"/>
+	  </AddressBookTaggedPropertyValue>
+	</AddressBookPropertyValueList>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetProps>
+  
+  <GetProps Typ="mkRespErr">
+	<StatusCode T="I" S="4">0</StatusCode>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </GetProps>
+  
+</syncgw>

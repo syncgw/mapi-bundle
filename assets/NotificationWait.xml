@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+  	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+   <NotificationWait Typ="Req">
+	<Flags T="I" S="4"/>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </NotificationWait>
+
+  <NotificationWait Typ="Resp">
+	<StatusCode T="I" S="4"/>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<EventPending T="I" S="4" D="AB_MASTER"/>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </NotificationWait>
+  
+  <NotificationWait Typ="mkResp">
+	<StatusCode T="I" S="4">0</StatusCode>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<EventPending T="I" S="4" D="AB_MASTER">false</EventPending>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </NotificationWait>
+  
+  <NotificationWait Typ="mkRespErr">
+	<StatusCode T="I" S="4"/>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </NotificationWait>
+
+</syncgw>

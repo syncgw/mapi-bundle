@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCMAPIHTTP] Messaging Application Programming Interface (MAPI) Extensions for HTTP
+
+ 	@package	sync*gw
+  	@subpackage	MAPI over HTTP support
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+  <Connect Typ="Req">
+	<UserDn T="A"/>
+	<Flags T="I" S="4" F="USER"/>
+	<DefaultCodePage T="I" S="4" D="CODEPAGE"/>
+	<LcidSort T="I" S="4" D="LCID"/>
+	<LcidString T="I" S="4" D="LCID"/>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </Connect>
+
+  <Connect Typ="Resp">
+	<Status T="I" S="4"/>
+	<ErrCode T="I" S="4" D="ERR_CODE"/>
+	<PollsMax T="I" S="4"/>
+	<RetryCount T="I" S="4"/>
+	<RetryDelay T="I" S="4"/>
+	<DnPrefix T="A"/>
+	<DisplayName T="S"/>
+	<AuxiliaryBufferSize T="I" S="4"/>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize">
+	  <RPC_HEADER_EXT>
+		<Version T="I" S="2"/>
+		<Flags T="I" S="2" F="HEADER"/>
+		<Size T="I" S="2"/>
+		<ActualSize T="I" S="2"/>
+	  </RPC_HEADER_EXT>
+	  <AUX_HEADER>
+		<Size T="I" S="2"/>
+		<Version T="I" S="1"/>
+		<Type T="I" S="1" D="AUX_TYPE"/>
+	  </AUX_HEADER>
+	  <EXORGINFO>
+		<OrgFlags T="I" S="4" F="EXORGINFO"/>
+	  </EXORGINFO>
+	  <AUX_HEADER>
+		<Size T="I" S="2"/>
+		<Version T="I" S="1"/>
+		<Type T="I" S="1" D="AUX_TYPE"/>
+	  </AUX_HEADER>
+	  <CLIENT_CONTROL>
+		<EnableFlags T="I" S="4" F="CLIENT_CONTROL"/>
+		<ExpiryTime T="I" S="4"/>
+	  </CLIENT_CONTROL>
+	  <AUX_HEADER>
+		<Size T="I" S="2"/>
+		<Version T="I" S="1"/>
+		<Type T="I" S="1" D="AUX_TYPE"/>
+	  </AUX_HEADER>
+	  <ENDPOINT_CAPABILITIES>
+		<EndpointCapFlag T="I" S="4" D="AUX_CAPABILITIES"/>
+	  </ENDPOINT_CAPABILITIES>
+	</AuxiliaryBuffer>
+  </Connect>
+  
+  <Connect Typ="mkResp">
+	<Status T="I" S="4">0</Status>
+	<ErrCode T="I" S="4" D="ERR_CODE">Success</ErrCode>
+	<PollsMax T="I" S="4">60000</PollsMax>
+	<RetryCount T="I" S="4">6</RetryCount>
+	<RetryDelay T="I" S="4">10000</RetryDelay>
+	<DnPrefix T="A"/>
+	<DisplayName T="S"/>
+	<AuxiliaryBufferSize T="I" S="4">36</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize">
+	  <RPC_HEADER_EXT>
+		<Version T="I" S="2">0</Version>
+		<Flags T="I" S="2" F="HEADER">Last</Flags>
+		<Size T="I" S="2">28</Size>
+		<ActualSize T="I" S="2">28</ActualSize>
+	  </RPC_HEADER_EXT>
+	  <AUX_HEADER>
+		<Size T="I" S="2">8</Size>
+		<Version T="I" S="1">1</Version>
+		<Type T="I" S="1" D="AUX_TYPE">EXORGINFO</Type>
+	  </AUX_HEADER>
+	  <EXORGINFO>
+		<OrgFlags T="I" S="4" F="EXORGINFO">PublicFolderEnabled|UseAutoDiscover</OrgFlags>
+	  </EXORGINFO>
+	  <AUX_HEADER>
+		<Size T="I" S="2">12</Size>
+		<Version T="I" S="1">1</Version>
+		<Type T="I" S="1" D="AUX_TYPE">CLIENT_CONTROL</Type>
+	  </AUX_HEADER>
+	  <CLIENT_CONTROL>
+		<EnableFlags T="I" S="4" F="CLIENT_CONTROL">EnableCompression|EnableHTTPTunneling</EnableFlags>
+		<ExpiryTime T="I" S="4">604800000</ExpiryTime>
+	  </CLIENT_CONTROL>
+	  <AUX_HEADER>
+		<Size T="I" S="2">8</Size>
+		<Version T="I" S="1">1</Version>
+		<Type T="I" S="1" D="AUX_TYPE">ENDPOINT_CAPABILITIES</Type>
+	  </AUX_HEADER>
+	  <ENDPOINT_CAPABILITIES>
+		<EndpointCapFlag T="I" S="4" D="AUX_CAPABILITIES">SingleEndpoint</EndpointCapFlag>
+	  </ENDPOINT_CAPABILITIES>
+	</AuxiliaryBuffer>
+  </Connect>
+  
+  <Connect Typ="mkRespErr">
+	<StatusCode T="I" S="4"/>
+	<AuxiliaryBufferSize T="I" S="4">0</AuxiliaryBufferSize>
+	<AuxiliaryBuffer T="XA" S="AuxiliaryBufferSize"/>
+  </Connect>
+
+</syncgw>
