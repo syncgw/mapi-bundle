@@ -1,5 +1,6 @@
 {
 	"name" : "syncgw/mapi-bundle",
+	"description" : "sync•gw MAPI (Messaging Application Programming Interface) bundle.",
 	"license" : "LGPL-3.0-or-later",
 	"homepage" : "https://github.com/syncgw/file-bundle",
 	"authors" : [{
