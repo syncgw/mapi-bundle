@@ -8,7 +8,7 @@
 
 ## EXPERIMENTAL: MAPI over HTTP bundle for sync•gw ##
 If you want to connect your **[Outlook](https://en.wikipedia.org/wiki/Outlook)** installation to **sync•gw**,
-then you need **Messaging Application Programming Interface (MAPI) over HTTP ** protocol.
+then you need **Messaging Application Programming Interface (MAPI) over HTTP** protocol.
 
 The included files enables support for [MAPI](https://en.wikipedia.org/wiki/MAPI). Technically the
 communication between **Outlook** and your **sync•gw** installation works fine, bute unfortunately 
