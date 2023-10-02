@@ -43,19 +43,18 @@ class mapiExecute extends mapiWBXML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; request/response handler', 'Execute'));
+ 	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Opt', 'LZ77 compression and decompression');
+		$xml->addVar('Stat', 'v1.0');
 
 		$xml->addVar('Opt', 'DIRECT2 Encoding Algorithm');
+		$xml->addVar('Stat', 'v1.0');
 
 		$xml->addVar('Opt', '<a href="https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-XCA/%5bMS-XCA%5d.pdf" target="_blank">[MS-XCA]</a> '.
-				      'Xpress Compression Algorithm v9.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Xpress Compression Algorithm');
+		$xml->addVar('Stat', 'v9.0');
 
 	}
 

@@ -52,21 +52,20 @@ class mapiHTTP extends HTTP {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcmapihttp" target="_blank">[MS-OXCMAPIHTTP]</a> '.
-				      'Messaging Application Programming Interface (MAPI) Extensions for HTTP v13.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Messaging Application Programming Interface (MAPI) Extensions for HTTP');
+		$xml->addVar('Stat', 'v13.0');
 
 		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc2616" target="_blank">RFC2616</a> '.
-				      'Hypertext Transfer Protocol -- HTTP/1.1');
-		$xml->addVar('Stat', 'Implemented');
+				      'Hypertext Transfer Protocol -- HTTP');
+		$xml->addVar('Stat', 'v1.1');
 
 		$xml->addVar('Opt', '<a href="https://tools.ietf.org/html/rfc4122" target="_blank">RFC4122</a> '.
 				      'A Universally Unique IDentifier (UUID) URN Namespace');
-		$xml->addVar('Stat', 'Implemented');
+		$xml->addVar('Stat', 'v4.0');
 	}
 
 	/**

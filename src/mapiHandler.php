@@ -45,30 +45,28 @@ class mapiHandler extends mapiWBXML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+ 	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'MAPI over HTTP handler');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxnpsi" target="_blank">[MS-OXNSPI]</a> '.
-				      'Exchange Server Name Service Provider Interface (NSPI) Protocol v13.1');
-		$xml->addVar('Stat', 'Implemented');
+				      'Exchange Server Name Service Provider Interface (NSPI) Protocol');
+		$xml->addVar('Stat', 'v13.1');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcprpt" target="_blank">[MS-OXCPRPT]</a> '.
-				      'Property and Stream Object Protocol v17.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Property and Stream Object Protocol');
+		$xml->addVar('Stat', 'v17.0');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcperm" target="_blank">[MS-OXCPERM]</a> '.
-				      'Exchange Access and Operation Permissions Protocol v15.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Exchange Access and Operation Permissions Protocol');
+		$xml->addVar('Stat', 'v15.0');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxoabk" target="_blank">[MS-OXOABK]</a> '.
-				      'Address Book Object Protocol v18.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Address Book Object Protocol');
+		$xml->addVar('Stat', 'v18.0');
 
-		$srv = Server::getInstance();
-		$srv->getSupInfo($xml, $status, 'mapi', [ 'mapiDefs', 'mapiFlags', 'mapiStatus' ]);
+		Server::getInstance()->getBundleInfo($xml, 'mapi-bundle/src', 'mapi', [ 'mapiDefs', 'mapiFlags', 'mapiStatus' ]);
 	}
 
 	/**

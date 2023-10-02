@@ -222,29 +222,28 @@ class mapiWBXML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
+  	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcrpc" target="_blank">[MS-UCODEREF]</a> '.
-				      'Windows Protocols Unicode Reference v15.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Windows Protocols Unicode Reference');
+		$xml->addVar('Stat', 'v15.0');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcrpc" target="_blank">[MS-OXCRPC]</a> '.
-				      'Wire Format Protocol v23.1');
-		$xml->addVar('Stat', 'Implemented');
+				      'Wire Format Protocol');
+		$xml->addVar('Stat', 'v23.1');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcdata" target="_blank">[MS-OXCDATA]</a> '.
-				      'Data Structures v18.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Data Structures');
+		$xml->addVar('Stat', 'v18.0');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcfold" target="_blank">[MS-OXCFOLD]</a> '.
-				      'Folder Object Protocol v23.2');
-		$xml->addVar('Stat', 'Implemented');
+				      'Folder Object Protocol');
+		$xml->addVar('Stat', 'v23.2');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcstor" target="_blank">[MS-OXCSTOR]</a> '.
-				      'Store Object Protocol v25.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Store Object Protocol');
+		$xml->addVar('Stat', 'v25.0');
 	}
 
 	/**

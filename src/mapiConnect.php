@@ -44,15 +44,12 @@ class mapiConnect extends mapiWBXML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
-	 */
-	public function getInfo(XML &$xml, bool $status): void {
-
-		$xml->addVar('Opt', sprintf('&lt;%s&gt; request/response handler', 'Connect'));
+ 	 */
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-lcid" target="_blank">[MS-LCID]</a> '.
-				      'Windows Language Code Identifier (LCID) Reference v15.0');
-		$xml->addVar('Stat', 'Implemented');
+				      'Windows Language Code Identifier (LCID) Reference');
+		$xml->addVar('Stat', 'v15.0');
 
 	}
 
